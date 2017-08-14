@@ -24,12 +24,17 @@ ol, ul {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 54px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 54px;
+}
+
+.square.winner {    
+  background-color: #ff6b6b;
+  border-color: #cc0a0a;
 }
 
 .square:focus {
