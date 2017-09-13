@@ -8,11 +8,11 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var changed = require('gulp-changed');
 
-/* Source and destiny folders */
+/* Source and destination folders */
 var SCSS_SRC = './src/Assets/scss/**/*.scss';
 var SCSS_DEST = './src/Assets/css';
 
-/* Compiling the scss files from scss source folder to css destiny folder */
+/* Compiling the scss files from scss source folder to css destination folder */
 gulp.task('compile_scss', function() {
 	gulp.src(SCSS_SRC)
 	.pipe(sass().on('error', sass.logError))
