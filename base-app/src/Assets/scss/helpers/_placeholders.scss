@@ -1,0 +1,25 @@
+%bg-img {
+	width: 100%;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.img-placeholder {
+	@extend %bg-img;
+	background-image: url(http://via.placeholder.com/350x150);
+}
+
+%btn {
+	padding: 8px;
+	border: 0 2px 2px 0;
+	width: 200px;
+	text-align: center;
+	display: block;
+}
+
+%center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -9,10 +9,10 @@ var rename = require('gulp-rename');
 var changed = require('gulp-changed');
 
 /* Source and destination folders */
-var SCSS_SRC = './src/Assets/scss/**/*.scss';
+var SCSS_SRC = './src/Assets/scss/main.scss';
 var SCSS_DEST = './src/Assets/css';
 
-/* Compiling the scss files from scss source folder to css destination folder */
+/* Compiling, minifying, renaming and watching scss */
 gulp.task('compile_scss', function() {
 	gulp.src(SCSS_SRC)
 	.pipe(sass().on('error', sass.logError))
@@ -22,7 +22,14 @@ gulp.task('compile_scss', function() {
 	.pipe(gulp.dest(SCSS_DEST))
 });
 
-/* Tasks to watch for changes */
+/* Only compile */
+gulp.task('simple_compile_scss', function() {
+	gulp.src(SCSS_SRC)
+	.pipe(sass().on('error', sass.logError))
+	.pipe(gulp.dest(SCSS_DEST))
+});
+
+/* Watch and recompile */
 gulp.task('watch_scss', function() {
 	gulp.watch(SCSS_SRC, ['compile_scss']);
 });

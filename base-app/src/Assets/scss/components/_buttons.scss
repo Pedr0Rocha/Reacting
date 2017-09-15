@@ -1,0 +1,4 @@
+.primary-button {
+	@include rounded-border(5px);
+	@include btn-background(green);
+}

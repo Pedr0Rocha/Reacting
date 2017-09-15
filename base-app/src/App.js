@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 /* Components */
-import Header from './components/headerComponent/header';
-import Footer from './components/footerComponent/footer';
-import Homepage from './components/pages/homePage';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Homepage from './components/Pages/HomePage';
 
 /* Includes */
-import './Assets/css/default.min.css';
+import './Assets/css/main.min.css';
 
 class App extends Component {
 	render() {

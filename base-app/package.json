@@ -1,5 +1,5 @@
 {
-  "name": "share-flix",
+  "name": "base-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

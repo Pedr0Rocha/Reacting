@@ -1,0 +1,21 @@
+@mixin rounded-border($radius) {
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin transition-all() {
+	-webkit-transition:all 0.4s ease;
+	-moz-transition:all 0.4s ease;
+	-o-transition:all 0.4s ease;
+	transition:all 0.4s ease;
+}
+
+@mixin btn-background($bg) {
+	@include transition-all();
+	@extend %btn;
+	background-color: $bg;
+	&:hover {
+		background-color: darken($bg, 20%);
+	}
+}
