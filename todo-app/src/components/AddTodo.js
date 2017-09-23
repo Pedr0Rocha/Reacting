@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 const styles = {
   addTodoBox: {
@@ -30,6 +32,30 @@ class AddTodo extends Component {
 
   static defaultProps = {
     priority: ['Important', 'High', 'Medium', 'Low'],
+  }
+
+  formatData(data) {
+    const newData = data.map( (props) => {
+      props.priority = this.props.priority[Math.floor(Math.random() * this.props.priority.length)];
+      props.category = 'Fake data';
+      return props;
+    });
+    return newData;
+  }
+
+  handleGetFakeTodos() {
+    $.ajax({
+      url: 'https://jsonplaceholder.typicode.com/todos',
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        const fakeData = this.formatData(data);
+        this.props.getFakeTodos(fakeData);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log(err);
+      },
+    })
   }
 
   isFormValid(data) {
@@ -92,9 +118,16 @@ class AddTodo extends Component {
           </div>
           <button type="submit" value="submit" style={styles.submitButton}>CREATE</button>
         </form>
+        <button onClick={this.handleGetFakeTodos.bind(this)} style={styles.submitButton}>GET FAKE TODO'S</button>
       </div>
     );
   }
+}
+
+AddTodo.propTypes = {
+  priority: PropTypes.array,
+  addTodo: PropTypes.func,
+  getFakeTodos: PropTypes.func, 
 }
 
 export default AddTodo;
