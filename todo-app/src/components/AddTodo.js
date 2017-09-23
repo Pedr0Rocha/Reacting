@@ -32,14 +32,38 @@ class AddTodo extends Component {
     priority: ['Important', 'High', 'Medium', 'Low'],
   }
 
+  isFormValid = (data) => {
+    if (data.title.value === '') {
+      alert("Title can't be empty!");
+      return false;
+    } else if (data.category.value === '') {
+      alert("Category can't be empty!");
+      return false;
+    }
+    return true;
+  }
+
   createNewTodo(e) {
-    console.log("New todo created");
     e.preventDefault();
+    const formData = this.refs;
+
+    if (this.isFormValid(formData)) {
+      this.setState({ 
+        newTodo: {
+          id: Math.floor(Math.random() * 65536),
+          title: formData.title.value,
+          category: formData.category.value,
+          priority: formData.priority.value,
+        }
+      }, () => {
+        this.props.addTodo(this.state.newTodo);
+      });
+    }
   }
 
   render() {
     let priorityOptions = this.props.priority.map( (priority) => {
-      return <option key={priority} value="priority">{priority}</option>
+      return <option key={priority} value={priority}>{priority}</option>
     });
 
     return (

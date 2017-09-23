@@ -6,9 +6,9 @@ class Todos extends Component {
     let todoItems;
 
     if (this.props.todos) {
-      todoItems = this.props.todos.map( (todo) => {
+      todoItems = this.props.todos.map( (todo, index) => {
         return (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} index={index} todo={todo} />
         );
       });
     }

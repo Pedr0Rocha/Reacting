@@ -25,6 +25,11 @@ class App extends Component {
     });
   }
 
+  updateTodoList(newTodo) {
+    let todos = [...this.state.todos, newTodo];
+    this.setState({todos: todos});
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,7 +37,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to To-do App</h2>
         </div>
-        <AddTodo />
+        <AddTodo addTodo={this.updateTodoList.bind(this)} />
         <Todos todos={this.state.todos} />
       </div>
     );
