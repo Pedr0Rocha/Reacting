@@ -32,7 +32,7 @@ class AddTodo extends Component {
     priority: ['Important', 'High', 'Medium', 'Low'],
   }
 
-  isFormValid = (data) => {
+  isFormValid(data) {
     if (data.title.value === '') {
       alert("Title can't be empty!");
       return false;
@@ -43,8 +43,13 @@ class AddTodo extends Component {
     return true;
   }
 
-  createNewTodo(e) {
-    e.preventDefault();
+  clearForm() {
+    this.refs.title.value = '';
+    this.refs.category.value = '';
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
     const formData = this.refs;
 
     if (this.isFormValid(formData)) {
@@ -57,6 +62,7 @@ class AddTodo extends Component {
         }
       }, () => {
         this.props.addTodo(this.state.newTodo);
+        this.clearForm();
       });
     }
   }
@@ -69,7 +75,7 @@ class AddTodo extends Component {
     return (
       <div style={styles.addTodoBox}>
         <h3>Add To Do</h3>
-        <form onSubmit={this.createNewTodo.bind(this)}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <label>Title</label><br />
             <input type="text" ref="title" />

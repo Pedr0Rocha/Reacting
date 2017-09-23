@@ -25,9 +25,19 @@ class App extends Component {
     });
   }
 
-  updateTodoList(newTodo) {
+  handleAddTodo(newTodo) {
     let todos = [...this.state.todos, newTodo];
     this.setState({todos: todos});
+  }
+
+  handleDeleteTodo(id) {
+    let todos = this.state.todos;
+    const index = todos.findIndex( (x) => x.id === id);
+
+    if (index > -1) {
+      todos.splice(index, 1);
+      this.setState({todos: todos});
+    }
   }
 
   render() {
@@ -37,8 +47,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to To-do App</h2>
         </div>
-        <AddTodo addTodo={this.updateTodoList.bind(this)} />
-        <Todos todos={this.state.todos} />
+        <AddTodo addTodo={this.handleAddTodo.bind(this)} />
+        <Todos todos={this.state.todos} onDelete={this.handleDeleteTodo.bind(this)} />
       </div>
     );
   }
