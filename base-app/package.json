@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.13"
+    "react-scripts": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -14,11 +14,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.1",
     "gulp-changed": "^3.1.0",
     "gulp-clean-css": "^3.8.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.0"
   }
 }
